@@ -1,0 +1,126 @@
+.network-explorer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-app);
+  overflow: hidden;
+  background-image: 
+    radial-gradient(var(--border-subtle) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.network-controls {
+  position: absolute;
+  bottom: var(--space-5);
+  left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.control-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-panel);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.control-btn:hover {
+  background-color: var(--bg-panel-elevated);
+  color: var(--text-primary);
+}
+
+.network-canvas {
+  position: absolute;
+  width: 5000px; /* Large virtual canvas */
+  height: 5000px;
+  will-change: transform;
+}
+
+.network-connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.connection-line {
+  stroke: var(--border-strong);
+  stroke-width: 2;
+  transition: stroke 300ms, opacity 300ms;
+}
+
+.connection-line.highlighted {
+  stroke: var(--accent-color);
+  stroke-width: 3;
+}
+
+.connection-line.dimmed {
+  opacity: 0.15;
+}
+
+.asset-node {
+  position: absolute;
+  width: 160px;
+  background-color: rgba(22, 22, 24, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.asset-node:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.asset-node.selected {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px var(--accent-color), 0 8px 24px rgba(46, 102, 255, 0.2);
+}
+
+.asset-node.dimmed {
+  opacity: 0.2;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.node-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.node-type {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.node-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
