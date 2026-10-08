@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain, dialog, Menu } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -120,3 +121,18 @@ ipcMain.on('window:close', () => {
 
 ipcMain.handle('app:getVersion', () => app.getVersion());
 ipcMain.handle('app:getPlatform', () => process.platform);
+
+ipcMain.handle('updates:check', async () => {
+  if (isDev) return { status: 'dev-mode', message: 'Auto-update disabled in development' };
+  
+  try {
+    const result = await autoUpdater.checkForUpdatesAndNotify();
+    return { 
+      status: result?.updateInfo ? 'update-available' : 'up-to-date', 
+      info: result?.updateInfo 
+    };
+  } catch (error: any) {
+    console.error('Update check failed:', error);
+    return { status: 'error', message: error.message };
+  }
+});
