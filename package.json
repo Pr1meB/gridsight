@@ -2,7 +2,7 @@
   "name": "gridsight",
   "private": true,
   "version": "1.0.0",
-  "repository": "https://github.com/your-org/gridsight",
+  "repository": "https://github.com/Pr1meB/gridsight",
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
