@@ -43,6 +43,10 @@ jobs:
             release/*.exe
             release/*.dmg
             release/*.AppImage
+            release/*.deb
+            release/*.rpm
+            release/*.snap
+            release/*.tar.gz
             release/*.msi
             release/*.zip
             release/latest*.yml
